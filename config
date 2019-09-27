@@ -46,18 +46,20 @@ workspace_auto_back_and_forth yes
 
 # Shortcuts
 # Browser
-bindsym $mod+F1 exec google-chrome-unstable
+bindsym $mod+F1 exec google-chrome
 
 # Terminal (I avoid gnome applications now)
-bindsym Ctrl+$oth+T exec gnome-terminal
-bindsym $mod+Return exec urxvt
-bindsym $oth+Return exec gnome-terminal
+#bindsym Ctrl+$oth+T exec gnome-terminal
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec gnome-terminal
+bindsym $oth+Return exec emacsclient -c -a ""
 
 # Screenshot (TODO Find a new one)
 bindsym Ctrl+$oth+W exec gnome-screenshot
+bindsym Ctrl+$oth+l exec xscreensaver-command -lock
 
 # Nautilus
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec nautilus
 
 # Sublime (For lending my laptop to others)
 bindsym $mod+F4 exec subl
@@ -74,6 +76,9 @@ bindsym $oth+Shift+Right exec $control next move
 # Window Marks
 bindsym $mod+Shift+m exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+bindsym $mod+b exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+bindsym $mod+n move workspace to output left
 
 # brightness control
 bindsym XF86MonBrightnessDown exec xbacklight -steps 1 -time 0 -dec 6
@@ -146,29 +151,62 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+Shift+a focus child
 
+set $w1 "1"
+set $w2 "2"
+set $w3 "3"
+set $w4 "4"
+set $w5 "5"
+set $w6 "6"
+set $w7 "7"
+set $w8 "8"
+set $w9 "9"
+set $w10 "10"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
+
+bindsym $mod+Ctrl+1 workspace 11
+bindsym $mod+Ctrl+2 workspace 12
+bindsym $mod+Ctrl+3 workspace 13
+bindsym $mod+Ctrl+4 workspace 14
+bindsym $mod+Ctrl+5 workspace 15
+bindsym $mod+Ctrl+6 workspace 16
+bindsym $mod+Ctrl+7 workspace 17
+bindsym $mod+Ctrl+8 workspace 18
+bindsym $mod+Ctrl+9 workspace 19
+bindsym $mod+Ctrl+0 workspace 20
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
+
+bindsym $mod+Ctrl+Shift+1 move container to workspace 11
+bindsym $mod+Ctrl+Shift+2 move container to workspace 12
+bindsym $mod+Ctrl+Shift+3 move container to workspace 13
+bindsym $mod+Ctrl+Shift+4 move container to workspace 14
+bindsym $mod+Ctrl+Shift+5 move container to workspace 15
+bindsym $mod+Ctrl+Shift+6 move container to workspace 16
+bindsym $mod+Ctrl+Shift+7 move container to workspace 17
+bindsym $mod+Ctrl+Shift+8 move container to workspace 18
+bindsym $mod+Ctrl+Shift+9 move container to workspace 19
+bindsym $mod+Ctrl+Shift+0 move container to workspace 20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,8 +269,8 @@ bindsym $mod+F12  mode "$mode_system"
 # finds out, if available)
 
 bar {
-	#status_command i3status
-	status_command ~/.i3/initscript
+	status_command i3status
+	#status_command ~/.i3/initscript
         colors {
             # solarized
             background #073642
@@ -244,3 +282,4 @@ bar {
 }
 
 assign [class="HipChat"] 4
+assign [title="Figure 1"] 10
